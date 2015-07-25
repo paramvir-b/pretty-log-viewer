@@ -1,0 +1,18 @@
+# OS generated files #
+######################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Editor related #
+######################
+.*.swp
+Session.vim
+Sessionx.vim
+.idea/
+*.iml
+
+target/
+logback-test.xml
+
