@@ -21,9 +21,9 @@ import java.io.PrintStream;
  * Created by havexz on 1/31/14.
  */
 @RunWith(JUnit4.class)
-public class HumanLogMainTest {
+public class PrettyLogViewerMainTest {
 
-    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(HumanLogMainTest.class);
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(PrettyLogViewerMainTest.class);
 
     private static Logger createLoggerFor(String string, String file) {
         LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
@@ -76,7 +76,7 @@ public class HumanLogMainTest {
         LOGGER.info("Hello");
 
         //HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
-        LineProcessor lp = new LineProcessor();
+        LineProcessorOld lp = new LineProcessorOld();
 
         String inputStr = "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] {hello : \"basic\"}";
         String processedLine = lp.processLine(inputStr);
@@ -101,7 +101,7 @@ public class HumanLogMainTest {
         LOGGER.info("Hello");
 
         //HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
-        LineProcessor lp = new LineProcessor();
+        LineProcessorOld lp = new LineProcessorOld();
 
         String processedLine;
 
@@ -123,7 +123,7 @@ public class HumanLogMainTest {
 
     @Test
     public void testXmlJson() {
-        LineProcessor lp = new LineProcessor();
+        LineProcessorOld lp = new LineProcessorOld();
 
         String processedLine;
 
@@ -135,7 +135,7 @@ public class HumanLogMainTest {
         LOGGER.info("Hello");
 
         //HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
-        LineProcessor lp = new LineProcessor();
+        LineProcessorOld lp = new LineProcessorOld();
 
         String processedLine = lp.processLine(
                 "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] {hello : \"basic\"}");
@@ -184,7 +184,7 @@ public class HumanLogMainTest {
 
     @Test
     public void testBasic() {
-        HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
+        PrettyLogViewerMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
     }
 }
 
