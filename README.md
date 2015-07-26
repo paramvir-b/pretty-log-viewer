@@ -7,7 +7,36 @@ Motivation
 ----------
 
 On daily basis, I encountered logs which contain embedded compact JSON and XML content. So finally, I wrote a 
-rudimentary java app which can parse logs and expands JSON and XML content. 
+rudimentary java app which can parse logs and expands JSON and XML content.
+
+Some JSON in log like
+
+```text
+19:53:40,384 INFO [main] some message {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"} this is just
+```
+
+to pretty log
+
+```text
+19:53:40,384 INFO [main] some message 
+{
+  "array": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "boolean": true,
+  "number": 123.0,
+  "object": {
+    "a": "b",
+    "c": "d",
+    "e": "f"
+  },
+  "string": "Hello World"
+}
+ this is just
+ ```
+
 
 Features
 --------
