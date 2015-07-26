@@ -19,7 +19,6 @@ Basic Usage
 -----------
 
 ```text
-
 ava -jar target/pretty-log-viewer-<version>-jar-with-dependencies.jar -h
 usage: pretty-log-viewer [-h] [-f F]
 
@@ -28,7 +27,6 @@ Convert embedded json/xml objects into human readable form
 optional arguments:
   -h, --help             show this help message and exit
   -f F                   Log file name
-
 ```
 
 Reading from stdin
@@ -37,9 +35,7 @@ Reading from stdin
 If you want to use parse logs as they come.
 
 ```text
-
 cat src/test/resources/test_data/f1.log | java -jar target/pretty-log-viewer-1.0.0-SNAPSHOT-jar-with-dependencies.jar
-
 ```
 
 Reading from file
@@ -48,9 +44,7 @@ Reading from file
 If you want to use an existing log file.
 
 ```text
-
 java -jar target/pretty-log-viewer-1.0.0-SNAPSHOT-jar-with-dependencies.jar -f src/test/resources/test_data/f1.log
-
 ```
 
 Sample
@@ -59,7 +53,6 @@ Sample
 Input
 
 ```text
-
 2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] {hello : "basic"}
 2014-01-31 19:53:40,374 INFO [main] t [PrettyLogViewerMain.java:47] {hello : "basic"}
 2014-01-31 19:53:40,375 INFO [main] t [PrettyLogViewerMain.java:48] some message {hello : "basic"}
@@ -77,13 +70,11 @@ Input
 2014-01-31 19:53:10,547 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello">basic</xml>
 2014-01-31 19:53:10,548 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child><child><childl2>basic</childl2></child></xml>
 2014-01-31 19:53:10,549 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child><child>basic</child></xml> hello
-
 ```
 
 Output
 
 ```text
-
 src/test/resources/test_data/f1.log
 2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] 
 {
@@ -196,6 +187,4 @@ src/test/resources/test_data/f1.log
 </xml>
 
  after
-
- 
 ```
