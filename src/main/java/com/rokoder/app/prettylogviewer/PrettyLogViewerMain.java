@@ -38,7 +38,6 @@ public class PrettyLogViewerMain {
             Namespace ns = parser.parseArgs(args);
             String inputFileName = ns.getString("f");
 
-            System.out.println(inputFileName + "");
             PrettyLogViewerMain hlm = new PrettyLogViewerMain(inputFileName);
             hlm.process();
         } catch (ArgumentParserException e) {
@@ -66,6 +65,7 @@ public class PrettyLogViewerMain {
     public void process() {
         Scanner sin = createScanner();
         Writer writer = new OutputStreamWriter(System.out);
+
         LogProcessor fp = new LogProcessor(sin, writer);
         fp.process();
     }

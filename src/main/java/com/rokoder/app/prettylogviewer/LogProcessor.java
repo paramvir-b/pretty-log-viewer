@@ -1,8 +1,6 @@
 package com.rokoder.app.prettylogviewer;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,8 +44,6 @@ public class LogProcessor {
 
     public void process() {
 
-//        LineProcessorOld lp = new LineProcessorOld();
-
         while (inScanner.hasNextLine()) {
             String lineStr = inScanner.nextLine();
             boolean isFound = false;
@@ -66,25 +62,5 @@ public class LogProcessor {
             }
 
         }
-    }
-
-    public void process(Reader reader) {
-
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(reader);
-            LineProcessorOld lp = new LineProcessorOld();
-
-            String lineStr = null;
-            while ((lineStr = br.readLine()) != null) {
-                String processedLineStr = lp.processLine(lineStr);
-                System.out.print(processedLineStr);
-            }
-
-            br.close();
-        } catch (IOException e) {
-            throw new IllegalStateException("IO failed", e);
-        }
-
     }
 }

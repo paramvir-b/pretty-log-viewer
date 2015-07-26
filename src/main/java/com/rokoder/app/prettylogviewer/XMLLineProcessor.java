@@ -47,7 +47,7 @@ public class XMLLineProcessor implements LineProcessor {
 
                 String prettyStr = convertToPrettyStr(matcher.group());
                 outStrList.add(prettyStr);
-            } catch (Exception e) {
+            } catch (RuntimeException e) {
                 e.printStackTrace();
                 break;
             }
@@ -107,6 +107,7 @@ public class XMLLineProcessor implements LineProcessor {
             DOMSource source = new DOMSource(document);
             transformer.transform(source, result);
             String xmlString = result.getWriter().toString();
+            xmlString = xmlString.substring(0, xmlString.lastIndexOf('\n'));
             return xmlString;
         } catch (TransformerConfigurationException e) {
             throw new RuntimeException("Parsing failed for xml: " + inputStr, e);

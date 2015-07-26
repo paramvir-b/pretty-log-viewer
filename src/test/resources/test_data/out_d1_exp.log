@@ -1,0 +1,144 @@
+19:53:10,545 INFO [main] 
+{
+  "type": "basic"
+}
+19:53:40,374 INFO [main] 
+{
+  "type": "basic"
+}
+19:53:40,375 INFO [main] some message 
+{
+  "type": "basic"
+}
+19:53:40,376 INFO [main] some "message" : 
+{
+  "type": "basic"
+}
+19:53:40,377 INFO [main] some message
+19:53:40,378 INFO [main] some message
+19:53:40,379 INFO [main] some message 
+{
+  "type": "basic"
+}
+ this is just
+19:53:40,380 INFO [main] 
+{
+  "array": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "boolean": true,
+  "number": 123.0,
+  "object": {
+    "a": "b",
+    "c": "d",
+    "e": "f"
+  },
+  "string": "Hello World"
+}
+19:53:40,381 INFO [main] some message 
+{
+  "array": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "boolean": true,
+  "number": 123.0,
+  "object": {
+    "a": "b",
+    "c": "d",
+    "e": "f"
+  },
+  "string": "Hello World"
+}
+19:53:40,382 INFO [main] some message
+19:53:40,383 INFO [main] some message
+19:53:40,384 INFO [main] some message 
+{
+  "array": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "boolean": true,
+  "number": 123.0,
+  "object": {
+    "a": "b",
+    "c": "d",
+    "e": "f"
+  },
+  "string": "Hello World"
+}
+ this is just
+19:53:10,545 INFO [main] 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<hello>basic</hello>
+19:53:10,546 INFO [main] 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<hello>"basic"</hello>
+19:53:10,547 INFO [main] 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">basic</xml>
+19:53:10,548 INFO [main] 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">
+  <child>basic</child>
+  <child>
+    <childl2>basic</childl2>
+  </child>
+</xml>
+19:53:10,549 INFO [main] 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">
+  <child>basic</child>
+  <child>basic</child>
+</xml>
+ hello
+19:53:10,550 INFO [main] before 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">
+  <child>basic</child>
+  <child>basic</child>
+</xml>
+ after
+19:53:10,579 INFO [main] before 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">
+  <child>basic</child>
+</xml>
+ after1 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml2 name="hello">
+  <child>basic</child>
+</xml2>
+ after2
+19:53:10,580 INFO [main] before 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">
+  <child>basic</child>
+</xml>
+ after1 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xml name="hello">
+  <child>basic</child>
+</xml>
+ after2
+19:53:10,581 INFO [main] before <xml name="hello"><child>basic</child><child2>
+{
+  "array": [
+    1.0,
+    2.0,
+    3.0
+  ],
+  "boolean": true,
+  "number": 123.0,
+  "object": {
+    "a": "b",
+    "c": "d",
+    "e": "f"
+  },
+  "string": "Hello World"
+}
+</child2></xml> after2

@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
 /**
  * Created by havexz on 1/31/14.
@@ -71,95 +72,12 @@ public class PrettyLogViewerMainTest {
         return logger;
     }
 
-    @Test
-    public void testJson() throws IOException {
-        LOGGER.info("Hello");
 
-        //HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
-        LineProcessorOld lp = new LineProcessorOld();
-
-        String inputStr = "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] {hello : \"basic\"}";
-        String processedLine = lp.processLine(inputStr);
-
-        LOGGER.info(processedLine);
-        Assert.assertEquals("2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] \n" +
-                "{\n" +
-                "  \"hello\": \"basic\"\n" +
-                "}\n", processedLine);
-
-        processedLine = lp.processLine(
-                "2014-01-31 19:53:40,375 INFO [main] t [HumanLogMainTest.java:48] some message {hello : \"basic\"}");
-        Assert.assertEquals("2014-01-31 19:53:40,375 INFO [main] t [HumanLogMainTest.java:48] some message \n" +
-                "{\n" +
-                "  \"hello\": \"basic\"\n" +
-                "}\n", processedLine);
-
-    }
-
-    @Test
-    public void testXml() throws IOException {
-        LOGGER.info("Hello");
-
-        //HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
-        LineProcessorOld lp = new LineProcessorOld();
-
-        String processedLine;
-
-        processedLine = lp.processLine(
-                "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] <hello><child>basic</child></hello>");
-        Assert.assertEquals("2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] \n" +
-                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<hello>\n" +
-                "  <child>basic</child>\n" +
-                "</hello>\n", processedLine);
-
-        processedLine = lp.processLine(
-                "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] <hello>basic</hello>");
-
-        processedLine = lp.processLine(
-                "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] <hello>\"basic\"</hello>");
-
-    }
-
-    @Test
-    public void testXmlJson() {
-        LineProcessorOld lp = new LineProcessorOld();
-
-        String processedLine;
-
-        //processedLine = lp.processLine("2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] before <xml name=\"hello\"><child>basic</child></xml><xml name=\"hello\"><child>basic</child><child2>{\"array\":[1,2,3],\"boolean\":true,\"null\":null,\"number\":123,\"object\":{\"a\":\"b\",\"c\":\"d\",\"e\":\"f\"},\"string\":\"Hello World\"}</child2></xml> after2");
-    }
 
     @Test
     public void test1() throws IOException {
         LOGGER.info("Hello");
-
-        //HumanLogMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
-        LineProcessorOld lp = new LineProcessorOld();
-
-        String processedLine = lp.processLine(
-                "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] {hello : \"basic\"}");
-
-        Assert.assertEquals("2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] \n" +
-                "{\n" +
-                "  \"hello\": \"basic\"\n" +
-                "}\n", processedLine);
-
-        processedLine = lp.processLine(
-                "2014-01-31 19:53:40,375 INFO [main] t [HumanLogMainTest.java:48] some message {hello : \"basic\"}");
-        Assert.assertEquals("2014-01-31 19:53:40,375 INFO [main] t [HumanLogMainTest.java:48] some message \n" +
-                "{\n" +
-                "  \"hello\": \"basic\"\n" +
-                "}\n", processedLine);
-
-        processedLine = lp.processLine(
-                "2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] <hello><child>basic</child></hello>");
-        Assert.assertEquals("2014-01-31 19:53:10,545 INFO [main] t [HumanLogMainTest.java:47] \n" +
-                "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                "<hello>\n" +
-                "  <child>basic</child>\n" +
-                "</hello>\n", processedLine);
-
+// TODO SEE IF WE CAN GENERATE LOG AND PASS IT TO TEST CASE
 //        Pipe  dOutputStream pipeOut = new PipedOutputStream();
 //
 //        Logger logger1 = createLoggerFor("t", pipeOut);
@@ -184,7 +102,7 @@ public class PrettyLogViewerMainTest {
 
     @Test
     public void testBasic() {
-        PrettyLogViewerMain.main(new String[]{"-f", "src/test/resources/test_data/f1.log"});
+        PrettyLogViewerMain.main(new String[]{"-f", "src/test/resources/test_data/in_d1.log"});
     }
 }
 

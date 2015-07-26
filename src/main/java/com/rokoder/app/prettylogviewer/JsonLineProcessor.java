@@ -42,7 +42,7 @@ public class JsonLineProcessor implements LineProcessor {
                 if (endStr.length() > 0) {
                     outStrList.add(endStr);
                 }
-            } catch (Exception e) {
+            } catch (RuntimeException e) {
                 e.printStackTrace();
                 break;
             }
