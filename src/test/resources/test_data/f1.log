@@ -1,10 +1,10 @@
-19:53:10,545 INFO [main] {hello : "basic"}
-19:53:40,374 INFO [main] {hello : "basic"}
-19:53:40,375 INFO [main] some message {hello : "basic"}
-19:53:40,376 INFO [main] some "message" : {hello : "basic"}
+19:53:10,545 INFO [main] { "type" : "basic"}
+19:53:40,374 INFO [main] {"type" : "basic"}
+19:53:40,375 INFO [main] some message { "type" : "basic"}
+19:53:40,376 INFO [main] some "message" : {"type" : "basic"}
 19:53:40,377 INFO [main] some message
 19:53:40,378 INFO [main] some message
-19:53:40,379 INFO [main] some message {hello : "basic"} this is just
+19:53:40,379 INFO [main] some message {"type" : "basic"} this is just
 19:53:40,380 INFO [main] {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}
 19:53:40,381 INFO [main] some message {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}
 19:53:40,382 INFO [main] some message
