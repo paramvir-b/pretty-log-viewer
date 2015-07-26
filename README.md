@@ -18,8 +18,12 @@ Features
 Basic Usage
 -----------
 
+After running 'mvn clean package'
+
 ```text
-ava -jar target/pretty-log-viewer-<version>-jar-with-dependencies.jar -h
+$mvn clean package
+
+$java -jar target/pretty-log-viewer-<version>-jar-with-dependencies.jar -h
 usage: pretty-log-viewer [-h] [-f F]
 
 Convert embedded json/xml objects into human readable form
