@@ -57,53 +57,53 @@ Sample
 Input
 
 ```text
-2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] {hello : "basic"}
-2014-01-31 19:53:40,374 INFO [main] t [PrettyLogViewerMain.java:47] {hello : "basic"}
-2014-01-31 19:53:40,375 INFO [main] t [PrettyLogViewerMain.java:48] some message {hello : "basic"}
-2014-01-31 19:53:40,376 INFO [main] t [PrettyLogViewerMain.java:48] some "message" : {hello : "basic"}
-2014-01-31 19:53:40,377 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,378 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,379 INFO [main] t [PrettyLogViewerMain.java:48] some message {hello : "basic"} this is just
-2014-01-31 19:53:40,380 INFO [main] t [PrettyLogViewerMain.java:48] {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}
-2014-01-31 19:53:40,381 INFO [main] t [PrettyLogViewerMain.java:48] some message {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}
-2014-01-31 19:53:40,382 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,383 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,384 INFO [main] t [PrettyLogViewerMain.java:48] some message {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"} this is just
-2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] <hello>basic</hello>
-2014-01-31 19:53:10,546 INFO [main] t [PrettyLogViewerMain.java:47] <hello>"basic"</hello>
-2014-01-31 19:53:10,547 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello">basic</xml>
-2014-01-31 19:53:10,548 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child><child><childl2>basic</childl2></child></xml>
-2014-01-31 19:53:10,549 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child><child>basic</child></xml> hello
+19:53:10,545 INFO [main] {hello : "basic"}
+19:53:40,374 INFO [main] {hello : "basic"}
+19:53:40,375 INFO [main] some message {hello : "basic"}
+19:53:40,376 INFO [main] some "message" : {hello : "basic"}
+19:53:40,377 INFO [main] some message
+19:53:40,378 INFO [main] some message
+19:53:40,379 INFO [main] some message {hello : "basic"} this is just
+19:53:40,380 INFO [main] {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}
+19:53:40,381 INFO [main] some message {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}
+19:53:40,382 INFO [main] some message
+19:53:40,383 INFO [main] some message
+19:53:40,384 INFO [main] some message {"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"} this is just
+19:53:10,545 INFO [main] <hello>basic</hello>
+19:53:10,546 INFO [main] <hello>"basic"</hello>
+19:53:10,547 INFO [main] <xml name="hello">basic</xml>
+19:53:10,548 INFO [main] <xml name="hello"><child>basic</child><child><childl2>basic</childl2></child></xml>
+19:53:10,549 INFO [main] <xml name="hello"><child>basic</child><child>basic</child></xml> hello
 ```
 
 Output
 
 ```text
 src/test/resources/test_data/f1.log
-2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:10,545 INFO [main] 
 {
   "hello": "basic"
 }
-2014-01-31 19:53:40,374 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:40,374 INFO [main] 
 {
   "hello": "basic"
 }
-2014-01-31 19:53:40,375 INFO [main] t [PrettyLogViewerMain.java:48] some message 
+19:53:40,375 INFO [main] some message 
 {
   "hello": "basic"
 }
-2014-01-31 19:53:40,376 INFO [main] t [PrettyLogViewerMain.java:48] some "message" : 
+19:53:40,376 INFO [main] some "message" : 
 {
   "hello": "basic"
 }
-2014-01-31 19:53:40,377 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,378 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,379 INFO [main] t [PrettyLogViewerMain.java:48] some message 
+19:53:40,377 INFO [main] some message
+19:53:40,378 INFO [main] some message
+19:53:40,379 INFO [main] some message 
 {
   "hello": "basic"
 }
  this is just
-2014-01-31 19:53:40,380 INFO [main] t [PrettyLogViewerMain.java:48] 
+19:53:40,380 INFO [main] 
 {
   "array": [
     1.0,
@@ -119,7 +119,7 @@ src/test/resources/test_data/f1.log
   },
   "string": "Hello World"
 }
-2014-01-31 19:53:40,381 INFO [main] t [PrettyLogViewerMain.java:48] some message 
+19:53:40,381 INFO [main] some message 
 {
   "array": [
     1.0,
@@ -135,9 +135,9 @@ src/test/resources/test_data/f1.log
   },
   "string": "Hello World"
 }
-2014-01-31 19:53:40,382 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,383 INFO [main] t [PrettyLogViewerMain.java:48] some message
-2014-01-31 19:53:40,384 INFO [main] t [PrettyLogViewerMain.java:48] some message 
+19:53:40,382 INFO [main] some message
+19:53:40,383 INFO [main] some message
+19:53:40,384 INFO [main] some message 
 {
   "array": [
     1.0,
@@ -154,19 +154,19 @@ src/test/resources/test_data/f1.log
   "string": "Hello World"
 }
  this is just
-2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:10,545 INFO [main] 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <hello>basic</hello>
 
-2014-01-31 19:53:10,546 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:10,546 INFO [main] 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <hello>"basic"</hello>
 
-2014-01-31 19:53:10,547 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:10,547 INFO [main] 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xml name="hello">basic</xml>
 
-2014-01-31 19:53:10,548 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:10,548 INFO [main] 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xml name="hello">
   <child>basic</child>
@@ -175,7 +175,7 @@ src/test/resources/test_data/f1.log
   </child>
 </xml>
 
-2014-01-31 19:53:10,549 INFO [main] t [PrettyLogViewerMain.java:47] 
+19:53:10,549 INFO [main] 
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <xml name="hello">
   <child>basic</child>
@@ -183,12 +183,4 @@ src/test/resources/test_data/f1.log
 </xml>
 
  hello
-2014-01-31 19:53:10,550 INFO [main] t [PrettyLogViewerMain.java:48] before 
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xml name="hello">
-  <child>basic</child>
-  <child>basic</child>
-</xml>
-
- after
 ```
