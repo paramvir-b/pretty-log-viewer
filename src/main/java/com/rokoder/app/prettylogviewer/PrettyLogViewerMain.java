@@ -13,7 +13,11 @@ import java.util.Scanner;
 
 public class PrettyLogViewerMain {
 
-    String fileName;
+    private final String fileName;
+
+    public PrettyLogViewerMain() {
+        fileName = null;
+    }
 
     public PrettyLogViewerMain(String fileName) {
         this.fileName = fileName;
@@ -21,7 +25,13 @@ public class PrettyLogViewerMain {
 
     public static void main(String args[]) {
 
-        ArgumentParser parser = ArgumentParsers.newArgumentParser("human-log").
+        if (args.length == 0) {
+            PrettyLogViewerMain hlm = new PrettyLogViewerMain();
+            hlm.process();
+            return;
+        }
+
+        ArgumentParser parser = ArgumentParsers.newArgumentParser("pretty-log-viewer").
                 defaultHelp(true).description("Convert embedded json/xml objects into human readable form");
         parser.addArgument("-f").help("Log file name");
         try {
