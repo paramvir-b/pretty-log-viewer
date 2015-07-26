@@ -13,9 +13,9 @@
 2014-01-31 19:53:10,545 INFO [main] t [PrettyLogViewerMain.java:47] <hello>basic</hello>
 2014-01-31 19:53:10,546 INFO [main] t [PrettyLogViewerMain.java:47] <hello>"basic"</hello>
 2014-01-31 19:53:10,547 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello">basic</xml>
-2014-01-31 19:53:10,548 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child></xml>
-2014-01-31 19:53:10,549 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child></xml> hello
-2014-01-31 19:53:10,550 INFO [main] t [PrettyLogViewerMain.java:48] before <xml name="hello"><child>basic</child></xml> after
+2014-01-31 19:53:10,548 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child><child><childl2>basic</childl2></child></xml>
+2014-01-31 19:53:10,549 INFO [main] t [PrettyLogViewerMain.java:47] <xml name="hello"><child>basic</child><child>basic</child></xml> hello
+2014-01-31 19:53:10,550 INFO [main] t [PrettyLogViewerMain.java:48] before <xml name="hello"><child>basic</child><child>basic</child></xml> after
 2014-01-31 19:53:10,579 INFO [main] t [PrettyLogViewerMain.java:47] before <xml name="hello"><child>basic</child></xml> after1 <xml2 name="hello"><child>basic</child></xml2> after2
 2014-01-31 19:53:10,580 INFO [main] t [PrettyLogViewerMain.java:47] before <xml name="hello"><child>basic</child></xml> after1 <xml name="hello"><child>basic</child></xml> after2
 2014-01-31 19:53:10,581 INFO [main] t [PrettyLogViewerMain.java:47] before <xml name="hello"><child>basic</child><child2>{"array":[1,2,3],"boolean":true,"null":null,"number":123,"object":{"a":"b","c":"d","e":"f"},"string":"Hello World"}</child2></xml> after2
