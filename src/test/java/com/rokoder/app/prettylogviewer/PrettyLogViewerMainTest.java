@@ -7,15 +7,15 @@ import ch.qos.logback.classic.encoder.PatternLayoutEncoder;
 import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.FileAppender;
 import ch.qos.logback.core.OutputStreamAppender;
+import com.google.common.io.Files;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
-import java.io.PipedOutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.List;
 
 /**
@@ -73,7 +73,6 @@ public class PrettyLogViewerMainTest {
     }
 
 
-
     @Test
     public void test1() throws IOException {
         LOGGER.info("Hello");
@@ -101,8 +100,38 @@ public class PrettyLogViewerMainTest {
     }
 
     @Test
-    public void testBasic() {
+    public void testBasic() throws IOException {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+
         PrettyLogViewerMain.main(new String[]{"-f", "src/test/resources/test_data/in_d1.log"});
+
+        List<String> expStringList = Files.readLines(new File("src/test/resources/test_data/out_d1_exp.log"),
+                Charset.defaultCharset());
+        String expStringArr[] = expStringList.toArray(new String[expStringList.size()]);
+        String actStr = new String(baos.toByteArray());
+        String actStringArr[] = actStr.split("\n");
+
+        Assert.assertArrayEquals(expStringArr, actStringArr);
     }
+
+    @Test
+    public void testStdIn() throws IOException {
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream("hello".getBytes());
+        System.setIn(byteArrayInputStream);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(baos));
+
+        PrettyLogViewerMain.main(new String[0]);
+
+        String expStringArr[] = new String[]{"hello"};
+
+        String actStr = new String(baos.toByteArray());
+        String actStringArr[] = actStr.split("\n");
+
+        Assert.assertArrayEquals(expStringArr, actStringArr);
+    }
+
 }
 

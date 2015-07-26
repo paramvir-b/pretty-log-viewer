@@ -52,35 +52,39 @@ public class LogProcessor {
     }
 
 
+    private void processLine(String lineStr) {
+        boolean isFound = false;
+        List<String> processedStrList = null;
+        try {
+            for (LineProcessor lp : lineProcessorList) {
+                if (!isFound && lp.canProcess(lineStr)) {
+                    processedStrList = lp.processLine(lineStr);
+                    isFound = true;
+                }
+            }
+        } catch (RuntimeException e) {
+            // We write the exception with special prefix
+            StackTraceElement[] stackTrace = e.getStackTrace();
+            for (StackTraceElement ste : stackTrace) {
+                writeLine("PLV-EXP[" + ste + "]PLV-EXP");
+            }
+
+            isFound = false;
+        }
+
+        if (isFound) {
+            writeLineList(processedStrList);
+        } else {
+            writeLine(lineStr);
+        }
+
+    }
+
     public void process() {
 
         while (inScanner.hasNextLine()) {
             String lineStr = inScanner.nextLine();
-            boolean isFound = false;
-            List<String> processedStrList = null;
-            try {
-                for (LineProcessor lp : lineProcessorList) {
-                    if (!isFound && lp.canProcess(lineStr)) {
-                        processedStrList = lp.processLine(lineStr);
-                        isFound = true;
-                    }
-                }
-            } catch (RuntimeException e) {
-                StackTraceElement[] stackTrace = e.getStackTrace();
-                for (StackTraceElement ste : stackTrace) {
-                    writeLine("PLV-EXP[" + ste + "]PLV-EXP");
-                }
-
-                // WE IGNORE THE EXCEPTION AND OUTPUT THE STRING AS IS
-                isFound = false;
-            }
-
-            if (isFound) {
-                writeLineList(processedStrList);
-            } else {
-                writeLine(lineStr);
-            }
-
+            processLine(lineStr);
         }
     }
 }

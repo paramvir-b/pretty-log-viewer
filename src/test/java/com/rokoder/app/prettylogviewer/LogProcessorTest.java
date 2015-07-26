@@ -12,6 +12,7 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,17 +32,10 @@ public class LogProcessorTest {
 
         List<String> expStringList = Files.readLines(new File("src/test/resources/test_data/out_d1_exp.log"),
                 Charset.defaultCharset());
-        List<String> actStringList = Arrays.asList(sw.toString().split("\n"));
+        String expStringArr[] = expStringList.toArray(new String[expStringList.size()]);
+        String actStringArr[] = sw.toString().split("\n");
 
-        Assert.assertEquals(expStringList.size(), actStringList.size());
-
-        for (int i = 0; i < actStringList.size(); i++) {
-            String actStr = actStringList.get(i);
-            String expStr = expStringList.get(i);
-//            LOGGER.info("\nexpStr={}\nactStr={}", expStr, actStr);
-
-            Assert.assertEquals(expStr, actStr);
-        }
+        Assert.assertArrayEquals(expStringArr, actStringArr);
     }
 
     @Test
