@@ -20,6 +20,16 @@ public class LogProcessor {
         lineProcessorList.add(new XMLLineProcessor());
     }
 
+    public LogProcessor(Scanner inScanner, Writer outWriter, LineProcessor[] lineProcessorArray) {
+        this.inScanner = inScanner;
+        this.outWriter = outWriter;
+
+        for (LineProcessor lp : lineProcessorArray) {
+            lineProcessorList.add(lp);
+        }
+    }
+
+
     private void write(String str) {
         try {
             outWriter.write(str);
@@ -56,6 +66,11 @@ public class LogProcessor {
                     }
                 }
             } catch (RuntimeException e) {
+                StackTraceElement[] stackTrace = e.getStackTrace();
+                for (StackTraceElement ste : stackTrace) {
+                    writeLine("PLV-EXP[" + ste + "]PLV-EXP");
+                }
+
                 // WE IGNORE THE EXCEPTION AND OUTPUT THE STRING AS IS
                 isFound = false;
             }

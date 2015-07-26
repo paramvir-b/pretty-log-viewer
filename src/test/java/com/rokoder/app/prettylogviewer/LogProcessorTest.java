@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -41,5 +42,29 @@ public class LogProcessorTest {
 
             Assert.assertEquals(expStr, actStr);
         }
+    }
+
+    @Test
+    public void testRuntimeExceptionFromLP() throws IOException {
+        StringWriter sw = new StringWriter();
+
+        StringReader sr = new StringReader("Hello");
+        Scanner sin = new Scanner(sr);
+
+        LogProcessor lp = new LogProcessor(sin, sw, new LineProcessor[]{new LineProcessor() {
+            @Override
+            public boolean canProcess(String lineStr) {
+                return true;
+            }
+
+            @Override
+            public List<String> processLine(String lineStr) {
+                throw new IllegalStateException();
+            }
+        }});
+
+        lp.process();
+
+        Assert.assertTrue(sw.toString().contains("PLV-EXP["));
     }
 }
