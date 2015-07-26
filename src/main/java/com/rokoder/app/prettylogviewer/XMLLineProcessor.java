@@ -1,7 +1,9 @@
 package com.rokoder.app.prettylogviewer;
 
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+// FIXME REMOVE THIS CODE OTHER VERSION OF API WORKS ON MOST PLATFOMRS
+//import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+//import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -9,10 +11,12 @@ import org.xml.sax.SAXException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -73,21 +77,41 @@ public class XMLLineProcessor implements LineProcessor {
         }
     }
 
+    // FIXME REMOVE THIS CODE OTHER VERSION OF API WORKS ON MOST PLATFOMRS
+//    private String convertToPrettyStrV2(String inputStr) {
+//        try {
+//            Document document = parseXmlFile(inputStr);
+//
+//            OutputFormat format = new OutputFormat(document);
+//            format.setLineWidth(65);
+//            format.setIndenting(true);
+//            format.setIndent(2);
+//            Writer out = new StringWriter();
+//            XMLSerializer serializer = new XMLSerializer(out, format);
+//            serializer.serialize(document);
+//            return out.toString();
+//        } catch (IOException e) {
+//            throw new RuntimeException("Parsing failed for xml: " + inputStr, e);
+//        }
+//
+//    }
+//
     private String convertToPrettyStr(String inputStr) {
         try {
             Document document = parseXmlFile(inputStr);
-
-            OutputFormat format = new OutputFormat(document);
-            format.setLineWidth(65);
-            format.setIndenting(true);
-            format.setIndent(2);
-            Writer out = new StringWriter();
-            XMLSerializer serializer = new XMLSerializer(out, format);
-            serializer.serialize(document);
-            return out.toString();
-        } catch (IOException e) {
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
+//initialize StreamResult with File object to save to file
+            StreamResult result = new StreamResult(new StringWriter());
+            DOMSource source = new DOMSource(document);
+            transformer.transform(source, result);
+            String xmlString = result.getWriter().toString();
+            return xmlString;
+        } catch (TransformerConfigurationException e) {
+            throw new RuntimeException("Parsing failed for xml: " + inputStr, e);
+        } catch (TransformerException e) {
             throw new RuntimeException("Parsing failed for xml: " + inputStr, e);
         }
-
     }
 }
