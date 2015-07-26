@@ -42,6 +42,7 @@ public class PrettyLogViewerMain {
             hlm.process();
         } catch (ArgumentParserException e) {
             parser.handleError(e);
+            // We are exiting with error code non zero and not logging exception. This is more intutive for shell utils
             System.exit(1);
         }
     }
