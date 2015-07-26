@@ -56,7 +56,7 @@ public class PrettyLogViewerMain {
                 sin = new Scanner(new File(fileName));
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException("File does not exist: " + fileName, e);
         }
 
         return sin;

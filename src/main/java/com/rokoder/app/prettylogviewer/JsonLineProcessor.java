@@ -22,29 +22,22 @@ public class JsonLineProcessor implements LineProcessor {
 
     private String convertToPrettyStr(String inputStr) {
         Object obj = gson.fromJson(inputStr, Object.class);
-        String jsonStr = gson.toJson(obj);
-        return jsonStr;
+        return gson.toJson(obj);
     }
 
     @Override
     public List<String> processLine(String lineStr) {
         Matcher matcher = JSON_LINE_PATTERN.matcher(lineStr);
-        ArrayList<String> outStrList = new ArrayList<String>();
+        List<String> outStrList = new ArrayList<String>();
         while (matcher.find()) {
-            try {
-                String startStr = lineStr.substring(0, matcher.start());
-                outStrList.add(startStr);
-                String foundStr = matcher.group();
+            String startStr = lineStr.substring(0, matcher.start());
+            outStrList.add(startStr);
 
-                String prettyStr = convertToPrettyStr(matcher.group());
-                outStrList.add(prettyStr);
-                String endStr = lineStr.substring(matcher.end());
-                if (endStr.length() > 0) {
-                    outStrList.add(endStr);
-                }
-            } catch (RuntimeException e) {
-                e.printStackTrace();
-                break;
+            String prettyStr = convertToPrettyStr(matcher.group());
+            outStrList.add(prettyStr);
+            String endStr = lineStr.substring(matcher.end());
+            if (endStr.length() > 0) {
+                outStrList.add(endStr);
             }
         }
 

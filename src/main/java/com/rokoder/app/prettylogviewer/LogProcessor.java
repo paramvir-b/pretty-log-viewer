@@ -48,11 +48,16 @@ public class LogProcessor {
             String lineStr = inScanner.nextLine();
             boolean isFound = false;
             List<String> processedStrList = null;
-            for (LineProcessor lp : lineProcessorList) {
-                if (!isFound && lp.canProcess(lineStr)) {
-                    processedStrList = lp.processLine(lineStr);
-                    isFound = true;
+            try {
+                for (LineProcessor lp : lineProcessorList) {
+                    if (!isFound && lp.canProcess(lineStr)) {
+                        processedStrList = lp.processLine(lineStr);
+                        isFound = true;
+                    }
                 }
+            } catch (RuntimeException e) {
+                // WE IGNORE THE EXCEPTION AND OUTPUT THE STRING AS IS
+                isFound = false;
             }
 
             if (isFound) {

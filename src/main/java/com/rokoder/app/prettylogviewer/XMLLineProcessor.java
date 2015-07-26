@@ -38,19 +38,13 @@ public class XMLLineProcessor implements LineProcessor {
         int startIdx = 0;
         int endIdx = lineStr.length() - 1;
         while (matcher.find()) {
-            try {
-                String startStr = lineStr.substring(startIdx, matcher.start());
-                startIdx += matcher.end();
-                endIdx = matcher.end();
-                outStrList.add(startStr);
-                String foundStr = matcher.group();
+            String startStr = lineStr.substring(startIdx, matcher.start());
+            startIdx += matcher.end();
+            endIdx = matcher.end();
+            outStrList.add(startStr);
 
-                String prettyStr = convertToPrettyStr(matcher.group());
-                outStrList.add(prettyStr);
-            } catch (RuntimeException e) {
-                e.printStackTrace();
-                break;
-            }
+            String prettyStr = convertToPrettyStr(matcher.group());
+            outStrList.add(prettyStr);
         }
 
         String endStr = lineStr.substring(endIdx);
