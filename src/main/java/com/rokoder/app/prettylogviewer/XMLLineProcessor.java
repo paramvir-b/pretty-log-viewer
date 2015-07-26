@@ -34,7 +34,7 @@ public class XMLLineProcessor implements LineProcessor {
     @Override
     public List<String> processLine(String lineStr) {
         Matcher matcher = XML_LINE_PATTERN.matcher(lineStr);
-        ArrayList<String> outStrList = new ArrayList<String>();
+        List<String> outStrList = new ArrayList<String>();
         int startIdx = 0;
         int endIdx = lineStr.length() - 1;
         while (matcher.find()) {
@@ -63,11 +63,11 @@ public class XMLLineProcessor implements LineProcessor {
             InputSource is = new InputSource(new StringReader(in));
             return db.parse(is);
         } catch (ParserConfigurationException e) {
-            throw new RuntimeException("Parsing failed for xml: " + in, e);
+            throw new IllegalStateException("Parsing failed for xml: " + in, e);
         } catch (SAXException e) {
-            throw new RuntimeException("Parsing failed for xml: " + in, e);
+            throw new IllegalStateException("Parsing failed for xml: " + in, e);
         } catch (IOException e) {
-            throw new RuntimeException("Parsing failed for xml: " + in, e);
+            throw new IllegalStateException("Parsing failed for xml: " + in, e);
         }
     }
 
@@ -96,7 +96,6 @@ public class XMLLineProcessor implements LineProcessor {
             Transformer transformer = TransformerFactory.newInstance().newTransformer();
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
-//initialize StreamResult with File object to save to file
             StreamResult result = new StreamResult(new StringWriter());
             DOMSource source = new DOMSource(document);
             transformer.transform(source, result);
@@ -104,9 +103,9 @@ public class XMLLineProcessor implements LineProcessor {
             xmlString = xmlString.substring(0, xmlString.lastIndexOf('\n'));
             return xmlString;
         } catch (TransformerConfigurationException e) {
-            throw new RuntimeException("Parsing failed for xml: " + inputStr, e);
+            throw new IllegalStateException("Parsing failed for xml: " + inputStr, e);
         } catch (TransformerException e) {
-            throw new RuntimeException("Parsing failed for xml: " + inputStr, e);
+            throw new IllegalStateException("Parsing failed for xml: " + inputStr, e);
         }
     }
 }

@@ -23,7 +23,7 @@ public class PrettyLogViewerMain {
         this.fileName = fileName;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         if (args.length == 0) {
             PrettyLogViewerMain hlm = new PrettyLogViewerMain();
