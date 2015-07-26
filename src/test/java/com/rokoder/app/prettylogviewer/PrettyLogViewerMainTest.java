@@ -100,6 +100,12 @@ public class PrettyLogViewerMainTest {
     }
 
     @Test
+    public void testBasic2() throws IOException {
+        PrettyLogViewerMain.main(new String[]{"-f", "src/test/resources/test_data/in_d1.log"});
+    }
+
+
+    @Test
     public void testBasic() throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         System.setOut(new PrintStream(baos));
